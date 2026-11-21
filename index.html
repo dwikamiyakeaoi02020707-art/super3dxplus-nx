@@ -23,6 +23,8 @@
       --btn-red-hover: #f85757;
       --btn-blue: #3b82f6;
       --btn-blue-hover: #5394ff;
+      --btn-discord: #5865F2;
+      --btn-discord-hover: #6d78f7;
       --pill-pink-bg: rgba(255, 92, 138, 0.12);
       --pill-pink-border: rgba(255, 92, 138, 0.38);
       --pill-blue-bg: rgba(59, 130, 246, 0.14);
@@ -103,7 +105,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 1.75rem;
+      gap: 1.6rem;
     }
 
     .nav-links a {
@@ -189,7 +191,7 @@
     .cta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.85rem;
+      gap: 0.75rem;
     }
 
     .btn {
@@ -197,9 +199,9 @@
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      padding: 0.78rem 1.35rem;
+      padding: 0.75rem 1.25rem;
       border-radius: 8px;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 600;
       text-decoration: none;
       transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
@@ -227,6 +229,16 @@
 
     .btn-blue:hover {
       background: var(--btn-blue-hover);
+    }
+
+    .btn-discord {
+      background: var(--btn-discord);
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(88, 101, 242, 0.28);
+    }
+
+    .btn-discord:hover {
+      background: var(--btn-discord-hover);
     }
 
     .btn-outline {
@@ -529,6 +541,7 @@
         <a href="#controls" data-i18n="nav_controls">Joy-Con Guide</a>
         <a href="#install" data-i18n="nav_install">Install</a>
         <a href="https://github.com/Holymagi/Super3DXPlus-NX" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://discord.gg/vGWFvkWpMM" target="_blank" rel="noopener">Discord</a>
         <a href="https://donatekasaneproject.vercel.app/" target="_blank" rel="noopener" class="nav-donate" data-i18n="nav_donate">Support Us</a>
       </div>
 
@@ -554,7 +567,10 @@
             Download v1.0.1 (.zip)
           </a>
           <a class="btn btn-blue" href="https://github.com/Holymagi/Super3DXPlus-NX" target="_blank" rel="noopener" data-i18n="btn_github">
-            Explore GitHub Repo
+            GitHub Repo
+          </a>
+          <a class="btn btn-discord" href="https://discord.gg/vGWFvkWpMM" target="_blank" rel="noopener" data-i18n="btn_discord">
+            Join Discord
           </a>
           <a class="btn btn-outline" href="https://donatekasaneproject.vercel.app/" target="_blank" rel="noopener" data-i18n="btn_donate">
             ♥ Donate
@@ -684,9 +700,11 @@
     <footer>
       <div>
         <strong>Credits:</strong>
-        <a href="https://github.com/smolderyguest/Super3DXPlus" target="_blank" rel="noopener">smolderyguest</a> (Original Recomp)
+        <a href="https://github.com/smolderyguest/Super3DXPlus" target="_blank" rel="noopener">smolderyguest</a> &amp; Allannn-sudo (Original Recomp)
         &bull;
-        <a href="https://github.com/Holymagi" target="_blank" rel="noopener">Holymagi</a> (Switch Port &amp; v1.0.1 Fixes)
+        <a href="https://github.com/Holymagi" target="_blank" rel="noopener">Holymagi</a> (Switch Port)
+        &bull;
+        <a href="https://discord.gg/vGWFvkWpMM" target="_blank" rel="noopener">Discord</a>
         &bull;
         <a href="https://donatekasaneproject.vercel.app/" target="_blank" rel="noopener" data-i18n="footer_donate">Support / Donate</a>
       </div>
@@ -704,7 +722,8 @@
         hero_bottom: "on Nintendo Switch.",
         hero_desc: "Unofficial Nintendo Switch homebrew port of Wangan Midnight Maximum Tune 3DX+ (Super3DXPlus recompilation by smolderyguest), tuned for smooth 60 FPS gameplay and reliable save persistence.",
         btn_download: "Download v1.0.1 (.zip)",
-        btn_github: "Explore GitHub Repo",
+        btn_github: "GitHub Repo",
+        btn_discord: "Join Discord",
         btn_donate: "♥ Donate",
         card1_eyebrow: "FEATURED RELEASE",
         card1_desc: "Native Switch .nro build with OpenGL ES 3.2 & SDL2. Runs at full 60 FPS with no overclock required and full Horizon FS / FAT32 save support.",
@@ -746,7 +765,8 @@
         hero_bottom: "di Nintendo Switch.",
         hero_desc: "Portingan homebrew unofficial Wangan Midnight Maximum Tune 3DX+ (berbasis recomp Super3DXPlus oleh smolderyguest), dioptimalkan untuk 60 FPS mulus dan save data yang aman.",
         btn_download: "Download v1.0.1 (.zip)",
-        btn_github: "Buka Repo GitHub",
+        btn_github: "Repo GitHub",
+        btn_discord: "Gabung Discord",
         btn_donate: "♥ Donasi",
         card1_eyebrow: "RILIS TERBARU",
         card1_desc: "Build native .nro Switch dengan OpenGL ES 3.2 & SDL2. Jalan 60 FPS tanpa perlu overclock dan perbaikan save data Horizon FS / FAT32.",
