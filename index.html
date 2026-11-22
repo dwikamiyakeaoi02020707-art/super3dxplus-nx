@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Super3DX+ NX — Unofficial Nintendo Switch Port</title>
+  <title>NSwitch3DX+ — Unofficial Nintendo Switch Port</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -23,13 +23,17 @@
       --btn-red-hover: #f85757;
       --btn-blue: #3b82f6;
       --btn-blue-hover: #5394ff;
-      --btn-discord: #5865F2;
-      --btn-discord-hover: #6d78f7;
       --pill-pink-bg: rgba(255, 92, 138, 0.12);
       --pill-pink-border: rgba(255, 92, 138, 0.38);
+      --pill-red-bg: rgba(239, 68, 68, 0.16);
+      --pill-red-border: rgba(239, 68, 68, 0.45);
+      --pill-red-text: #fca5a5;
       --pill-blue-bg: rgba(59, 130, 246, 0.14);
       --pill-blue-border: rgba(59, 130, 246, 0.42);
       --pill-blue-text: #7cc0ff;
+      --pill-green-bg: rgba(34, 197, 94, 0.14);
+      --pill-green-border: rgba(34, 197, 94, 0.4);
+      --pill-green-text: #86efac;
       --warn: #fbbf24;
     }
 
@@ -78,24 +82,25 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.65rem;
       text-decoration: none;
       color: var(--text);
       font-weight: 800;
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       letter-spacing: -0.02em;
     }
 
     .brand-icon {
-      width: 26px;
-      height: 26px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--pink), var(--btn-red));
       display: grid;
       place-items: center;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: #fff;
       font-weight: 800;
+      overflow: hidden;
     }
 
     .brand span.dot {
@@ -168,6 +173,20 @@
       padding: 5.5rem 0 4.5rem;
     }
 
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: #ff9cb8;
+      background: var(--pill-pink-bg);
+      border: 1px solid var(--pill-pink-border);
+      padding: 0.28rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 1.1rem;
+    }
+
     .hero h1 {
       font-size: clamp(2.4rem, 4.8vw, 3.6rem);
       font-weight: 800;
@@ -184,14 +203,14 @@
     .hero-desc {
       color: var(--muted);
       font-size: 1.02rem;
-      max-width: 480px;
+      max-width: 500px;
       margin-bottom: 2rem;
     }
 
     .cta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: 0.85rem;
     }
 
     .btn {
@@ -199,9 +218,9 @@
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      padding: 0.75rem 1.25rem;
+      padding: 0.78rem 1.35rem;
       border-radius: 8px;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 600;
       text-decoration: none;
       transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
@@ -229,16 +248,6 @@
 
     .btn-blue:hover {
       background: var(--btn-blue-hover);
-    }
-
-    .btn-discord {
-      background: var(--btn-discord);
-      color: #fff;
-      box-shadow: 0 6px 20px rgba(88, 101, 242, 0.28);
-    }
-
-    .btn-discord:hover {
-      background: var(--btn-discord-hover);
     }
 
     .btn-outline {
@@ -317,10 +326,22 @@
       color: #ff9cb8;
     }
 
+    .pill-red {
+      background: var(--pill-red-bg);
+      border: 1px solid var(--pill-red-border);
+      color: var(--pill-red-text);
+    }
+
     .pill-blue {
       background: var(--pill-blue-bg);
       border: 1px solid var(--pill-blue-border);
       color: var(--pill-blue-text);
+    }
+
+    .pill-green {
+      background: var(--pill-green-bg);
+      border: 1px solid var(--pill-green-border);
+      color: var(--pill-green-text);
     }
 
     .status-list {
@@ -365,11 +386,197 @@
       font-size: 0.94rem;
     }
 
-    /* Controls Grid */
-    .controls-grid {
+    /* Developers & Original Owner Section */
+    .owner-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(24, 10, 17, 0.85));
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      border-radius: 14px;
+      padding: 1.35rem 1.6rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .owner-left {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+    }
+
+    .dev-avatar {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border-strong);
+      background: rgba(255, 255, 255, 0.06);
+      flex-shrink: 0;
+    }
+
+    .owner-banner .dev-avatar {
+      border-color: var(--btn-blue);
+    }
+
+    .dev-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 0.85rem;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1rem;
+    }
+
+    .dev-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem 1.35rem;
+      backdrop-filter: blur(12px);
+      transition: transform 0.15s ease, border-color 0.2s ease;
+    }
+
+    .dev-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-strong);
+    }
+
+    .dev-info h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    .dev-info p {
+      color: var(--muted);
+      font-size: 0.84rem;
+      margin-top: 0.3rem;
+    }
+
+    .dev-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.45rem;
+    }
+
+    .dev-link {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--pink);
+      text-decoration: none;
+    }
+
+    .dev-link:hover {
+      text-decoration: underline;
+    }
+
+    /* 3D Controller Switcher & Mapping */
+    .pad-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .pad-tab {
+      background: rgba(18, 7, 13, 0.75);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 0.86rem;
+      font-weight: 600;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .pad-tab:hover {
+      border-color: var(--border-strong);
+      color: var(--text);
+    }
+
+    .pad-tab.active {
+      background: linear-gradient(135deg, rgba(255, 92, 138, 0.24), rgba(239, 68, 68, 0.2));
+      border-color: var(--pink);
+      color: #fff;
+      box-shadow: 0 0 18px rgba(255, 92, 138, 0.22);
+    }
+
+    .controls-3d-layout {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 1.35rem;
+      align-items: stretch;
+    }
+
+    .stage-wrap {
+      position: relative;
+      min-height: 360px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 50% 45%, rgba(255, 92, 138, 0.14), rgba(10, 4, 8, 0.92) 72%);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .stage-wrap:active {
+      cursor: grabbing;
+    }
+
+    #controllerCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .stage-hud-top {
+      position: absolute;
+      top: 0.8rem;
+      left: 0.9rem;
+      right: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: none;
+    }
+
+    .stage-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 0.24rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(16, 6, 11, 0.72);
+      border: 1px solid var(--border-strong);
+      color: #ff9cb8;
+      backdrop-filter: blur(6px);
+    }
+
+    .stage-hud-bottom {
+      position: absolute;
+      bottom: 0.75rem;
+      left: 0.9rem;
+      right: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      pointer-events: none;
+    }
+
+    .controls-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
     }
 
     .control-item {
@@ -377,14 +584,23 @@
       align-items: center;
       justify-content: space-between;
       gap: 0.75rem;
-      background: rgba(18, 7, 13, 0.7);
+      background: rgba(18, 7, 13, 0.72);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 0.8rem 1.05rem;
+      padding: 0.65rem 0.95rem;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+    }
+
+    .control-item:hover,
+    .control-item.active {
+      border-color: var(--pink);
+      background: rgba(255, 92, 138, 0.14);
+      transform: translateX(3px);
     }
 
     .control-label {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
     }
 
@@ -393,7 +609,7 @@
       border: 1px solid var(--pill-pink-border);
       color: #ff9cb8;
       font-family: Consolas, monospace;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       padding: 0.2rem 0.55rem;
       border-radius: 6px;
@@ -520,8 +736,16 @@
         padding: 3.5rem 0 2.5rem;
         gap: 2.25rem;
       }
+      .controls-3d-layout,
       .install-grid {
         grid-template-columns: 1fr;
+      }
+      .stage-wrap {
+        min-height: 300px;
+      }
+      .owner-banner {
+        flex-direction: column;
+        align-items: flex-start;
       }
       .nav-links {
         display: none;
@@ -533,15 +757,15 @@
   <nav>
     <div class="nav-inner">
       <a href="#" class="brand">
-        <span class="brand-icon">3+</span>
-        <span>super3dx+ nx<span class="dot">.</span></span>
+        <span class="brand-icon">NS</span>
+        <span>NSwitch3DX+<span class="dot">.</span></span>
       </a>
 
       <div class="nav-links">
-        <a href="#controls" data-i18n="nav_controls">Joy-Con Guide</a>
+        <a href="#team" data-i18n="nav_team">Developers</a>
+        <a href="#controls" data-i18n="nav_controls">3D Controls</a>
         <a href="#install" data-i18n="nav_install">Install</a>
         <a href="https://github.com/Holymagi/Super3DXPlus-NX" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://discord.gg/vGWFvkWpMM" target="_blank" rel="noopener">Discord</a>
         <a href="https://donatekasaneproject.vercel.app/" target="_blank" rel="noopener" class="nav-donate" data-i18n="nav_donate">Support Us</a>
       </div>
 
@@ -555,22 +779,20 @@
     <!-- Hero Split -->
     <section class="hero" style="margin-top: 0;">
       <div>
+        <div class="hero-badge" data-i18n="hero_badge">Formerly Super3DX+ NX • Rebranded to NSwitch3DX+</div>
         <h1>
           <span data-i18n="hero_top">Wangan arcade,</span>
           <span class="accent" data-i18n="hero_bottom">on Nintendo Switch.</span>
         </h1>
         <p class="hero-desc" data-i18n="hero_desc">
-          Unofficial Nintendo Switch homebrew port of Wangan Midnight Maximum Tune 3DX+ (Super3DXPlus recompilation by smolderyguest), tuned for smooth 60 FPS gameplay and reliable save persistence.
+          Unofficial Nintendo Switch homebrew port of Wangan Midnight Maximum Tune 3DX+ (based on the original Super3DXPlus recompilation by smolderyguest), featuring 60 FPS gameplay, touchscreen menus, and Online/LAN Versus.
         </p>
         <div class="cta-row">
           <a class="btn btn-red" href="https://github.com/Holymagi/Super3DXPlus-NX/releases/latest" target="_blank" rel="noopener" data-i18n="btn_download">
-            Download v1.0.1 (.zip)
+            Download Latest (.zip)
           </a>
           <a class="btn btn-blue" href="https://github.com/Holymagi/Super3DXPlus-NX" target="_blank" rel="noopener" data-i18n="btn_github">
-            GitHub Repo
-          </a>
-          <a class="btn btn-discord" href="https://discord.gg/vGWFvkWpMM" target="_blank" rel="noopener" data-i18n="btn_discord">
-            Join Discord
+            Explore GitHub Repo
           </a>
           <a class="btn btn-outline" href="https://donatekasaneproject.vercel.app/" target="_blank" rel="noopener" data-i18n="btn_donate">
             ♥ Donate
@@ -581,12 +803,12 @@
       <div class="hero-cards">
         <div class="glass-card">
           <div class="card-top">
-            <span class="eyebrow" data-i18n="card1_eyebrow">FEATURED RELEASE</span>
-            <span class="pill pill-pink">v1.0.1 Hotfix</span>
+            <span class="eyebrow" data-i18n="card1_eyebrow">UPCOMING RELEASE</span>
+            <span class="pill pill-pink">v1.0.2 Early Access</span>
           </div>
-          <div class="card-title">Super3DX+ NX</div>
+          <div class="card-title">NSwitch3DX+</div>
           <p class="card-text" data-i18n="card1_desc">
-            Native Switch .nro build with OpenGL ES 3.2 &amp; SDL2. Runs at full 60 FPS with no overclock required and full Horizon FS / FAT32 save support.
+            Native Switch <code>super3dx+nx.nro</code> build with OpenGL ES 3.2 &amp; SDL2. Includes touchscreen menu support, Online/LAN Versus, auto-logging (<code>save/log.txt</code>), and Export (English) support.
           </p>
         </div>
 
@@ -598,73 +820,159 @@
           <div class="status-list">
             <div class="status-row">
               <span>Nintendo Switch CFW (22.x.x)</span>
-              <span class="pill pill-pink">60 FPS Native</span>
+              <span class="pill pill-green">60 FPS Native</span>
             </div>
             <div class="status-row">
-              <span>Eden Emulator (PC)</span>
-              <span class="pill pill-blue">Supported</span>
+              <span>Export (EN) / Japan (JPN)</span>
+              <span class="pill pill-blue">EN Ready • JPN WIP</span>
             </div>
             <div class="status-row">
-              <span data-i18n="row_save">Garage &amp; Ranking Save</span>
-              <span class="pill pill-pink">Fixed v1.0.1</span>
+              <span data-i18n="row_mp">Online / LAN Versus &amp; Touch</span>
+              <span class="pill pill-pink">v1.0.2 EA</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Joy-Con & Controller Guide -->
-    <section id="controls">
+    <!-- Developers & Original Owner -->
+    <section id="team">
       <div class="section-header">
-        <h2 data-i18n="ctrl_title">Joy-Con &amp; Controller Guide</h2>
-        <p data-i18n="ctrl_sub">Supports Handheld Mode, Dual Joy-Con (Paired L+R), and Nintendo Switch Pro Controller.</p>
+        <h2 data-i18n="team_title">Developers &amp; Original Creator</h2>
+        <p data-i18n="team_sub">Built by the NSwitch3DX+ Switch porting team, based on the upstream Super3DXPlus / Re3DX+ project.</p>
       </div>
 
-      <div class="glass-card">
-        <div class="controls-grid">
-          <div class="control-item">
-            <span class="control-label" data-i18n="c_steer">Steer / Menu Navigation</span>
-            <span class="kbd">Left Stick / D-Pad</span>
+      <!-- Original Owner Highlight -->
+      <div class="owner-banner">
+        <div class="owner-left">
+          <img class="dev-avatar" src="https://files.catbox.moe/lrcop7.jpg" onerror="this.src='https://github.com/smolderyguest.png'" alt="smolderyguest avatar" />
+          <div class="dev-info">
+            <h3>
+              smolderyguest
+              <span class="pill pill-blue" data-i18n="role_owner">Original Owner / Upstream</span>
+            </h3>
+            <p data-i18n="desc_owner">Creator of the original Super3DXPlus / Re3DX+ recompilation engine that makes this Switch port possible.</p>
           </div>
-          <div class="control-item">
-            <span class="control-label" data-i18n="c_gas">Gas / Accelerate</span>
-            <span class="kbd">ZR</span>
-          </div>
-          <div class="control-item">
-            <span class="control-label" data-i18n="c_brake">Brake</span>
-            <span class="kbd">ZL</span>
-          </div>
-          <div class="control-item">
-            <span class="control-label" data-i18n="c_up">Shift Up (MT)</span>
-            <span class="kbd">R / A</span>
-          </div>
-          <div class="control-item">
-            <span class="control-label" data-i18n="c_down">Shift Down (MT)</span>
-            <span class="kbd">L / B</span>
-          </div>
-          <div class="control-item">
-            <span class="control-label" data-i18n="c_view">View Change</span>
-            <span class="kbd">Y</span>
-          </div>
-          <div class="control-item">
-            <span class="control-label" data-i18n="c_back">Interrupt / Back</span>
-            <span class="kbd">X</span>
-          </div>
-          <div class="control-item">
-            <span class="control-label" data-i18n="c_start">Start / Pause</span>
-            <span class="kbd">+ (Plus)</span>
-          </div>
-          <div class="control-item">
-            <span class="control-label" data-i18n="c_coin">Insert Coin / Service</span>
-            <span class="kbd">- (Minus)</span>
+        </div>
+        <a class="btn btn-blue" href="https://github.com/smolderyguest/Super3DXPlus" target="_blank" rel="noopener" data-i18n="btn_upstream">
+          Original Repo
+        </a>
+      </div>
+
+      <!-- Switch Port Developers & Testers -->
+      <div class="dev-grid">
+        <div class="dev-card">
+          <img class="dev-avatar" src="https://files.catbox.moe/nw69gv.jpg" onerror="this.src='https://github.com/Holymagi.png'" alt="Holymagi avatar" />
+          <div class="dev-info">
+            <h3>
+              Holymagi
+              <span class="pill pill-pink" data-i18n="role_lead">Switch Port Lead</span>
+              <span class="pill pill-red" data-i18n="role_teto">🥖 Kasane Teto Fan</span>
+            </h3>
+            <p data-i18n="desc_holymagi">NSwitch3DX+ branding, Switch CFW testing, Horizon FS / FAT32 save-data fix, and web portal maintainer.</p>
+            <div class="dev-links">
+              <a class="dev-link" href="https://github.com/Holymagi" target="_blank" rel="noopener">github.com/Holymagi →</a>
+            </div>
           </div>
         </div>
 
+        <div class="dev-card">
+          <img class="dev-avatar" src="https://files.catbox.moe/7cgtkw.webp" onerror="this.src='https://ui-avatars.com/api/?name=KZ&background=ef4444&color=fff&bold=true'" alt="KILLERz avatar" />
+          <div class="dev-info">
+            <h3>
+              KILLERz
+              <span class="pill pill-pink" data-i18n="role_coowner1">1st Co-Owner</span>
+            </h3>
+            <p data-i18n="desc_killerz">First Co-Owner of NSwitch3DX+, multiplayer/LAN testing, and community management.</p>
+            <div class="dev-links">
+              <a class="dev-link" href="#team">Discord: @_killerz</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="dev-card">
+          <img class="dev-avatar" src="https://github.com/dev1ce369.png" onerror="this.src='https://ui-avatars.com/api/?name=DK&background=3b82f6&color=fff&bold=true'" alt="donkeykorg / dev1ce369 avatar" />
+          <div class="dev-info">
+            <h3>
+              donkeykorg
+              <span class="pill pill-pink" data-i18n="role_coowner">Co-Owner &amp; Port Dev</span>
+            </h3>
+            <p data-i18n="desc_donkeykorg">Switch SDL2 entry point, touchscreen menus, LAN/Online Versus socket diagnostics, READY-button fix, and build tooling (GitHub: dev1ce369).</p>
+            <div class="dev-links">
+              <a class="dev-link" href="https://github.com/dev1ce369/super3dx-plus-nx" target="_blank" rel="noopener">github.com/dev1ce369 →</a>
+              <a class="dev-link" href="#team">Discord: @donkeykorg</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="dev-card">
+          <img class="dev-avatar" src="https://files.catbox.moe/ojqvbg.jpg" onerror="this.src='https://ui-avatars.com/api/?name=RK&background=22c55e&color=fff&bold=true'" alt="raku avatar" />
+          <div class="dev-info">
+            <h3>
+              raku
+              <span class="pill pill-green" data-i18n="role_tester">Tester</span>
+            </h3>
+            <p data-i18n="desc_raku">Early Access build tester, bug reporting, and gameplay stability feedback.</p>
+            <div class="dev-links">
+              <a class="dev-link" href="https://www.twitch.tv/rakuwoo" target="_blank" rel="noopener">twitch.tv/rakuwoo →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="dev-card">
+          <img class="dev-avatar" src="https://files.catbox.moe/ux4ovy.webp" onerror="this.src='https://ui-avatars.com/api/?name=MK&background=22c55e&color=fff&bold=true'" alt="MISKOKSO avatar" />
+          <div class="dev-info">
+            <h3>
+              MISKOKSO
+              <span class="pill pill-green" data-i18n="role_tester">Tester</span>
+            </h3>
+            <p data-i18n="desc_miskokso">Early Access build tester, save-data verification, and region compatibility testing.</p>
+            <div class="dev-links">
+              <a class="dev-link" href="https://passportdex.com/miskokso" target="_blank" rel="noopener">passportdex.com/miskokso →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive 3D Controller Mapping -->
+    <section id="controls">
+      <div class="section-header">
+        <h2 data-i18n="ctrl_title">Interactive 3D Controller Mapping</h2>
+        <p data-i18n="ctrl_sub">Switch between supported controllers and hover/tap any action to highlight its button in 3D.</p>
+      </div>
+
+      <div class="glass-card">
+        <div class="pad-tabs" role="tablist">
+          <button class="pad-tab active" data-pad="handheld" type="button">Switch Handheld</button>
+          <button class="pad-tab" data-pad="procon" type="button">Switch Pro Controller</button>
+          <button class="pad-tab" data-pad="dualsense" type="button">PS5 DualSense</button>
+          <button class="pad-tab" data-pad="xbox360" type="button">Xbox 360 Gamepad</button>
+        </div>
+
+        <div class="controls-3d-layout">
+          <!-- 3D Viewport -->
+          <div class="stage-wrap" id="stageWrap">
+            <canvas id="controllerCanvas"></canvas>
+            <div class="stage-hud-top">
+              <span class="stage-badge" id="padBadge">Nintendo Switch Handheld</span>
+              <span class="stage-badge" id="activePartBadge" data-i18n="hud_hover">Hover a key</span>
+            </div>
+            <div class="stage-hud-bottom">
+              <span data-i18n="hud_drag">🖱️ Drag to rotate 360°</span>
+              <span>WebGL 3D</span>
+            </div>
+          </div>
+
+          <!-- Dynamic Key Mapping List -->
+          <div class="controls-list" id="controlsList"></div>
+        </div>
+
         <div class="tip-box">
-          <strong data-i18n="tip_title">Joy-Con Tips:</strong>
+          <strong data-i18n="tip_title">Controller &amp; Touch Tips:</strong>
           <div style="margin-top: 0.35rem;" data-i18n="tip_1">• Pair both Joy-Cons as <strong>Dual Joy-Con</strong> (not single sideways) via Switch Home Menu → Controllers → Change Grip/Order before launching.</div>
-          <div data-i18n="tip_2">• On <strong>Eden Emulator</strong>, set Player 1 to <em>Pro Controller</em> or <em>Dual Joy-Con</em>.</div>
-          <div data-i18n="tip_3">• Right Stick shifter support is planned for a future update.</div>
+          <div data-i18n="tip_2">• Arcade menus can be tapped directly using the Switch <strong>Touchscreen</strong>.</div>
+          <div data-i18n="tip_3">• <strong>PS5 DualSense</strong> &amp; <strong>Xbox 360</strong> work via <em>Mission Control</em> on Switch CFW or directly on <em>Eden Emulator</em>.</div>
         </div>
       </div>
     </section>
@@ -679,9 +987,9 @@
       <div class="install-grid">
         <div class="glass-card">
           <ol class="steps">
-            <li data-i18n="step_1">Download <code>Super3DXPlus-NX_v1.0.1.zip</code> from the GitHub Releases page.</li>
-            <li data-i18n="step_2">Extract the archive directly to the root of your SD card (<code>sdmc:/</code>).</li>
-            <li data-i18n="step_3">Copy your own legally obtained game assets into <code>sdmc:/switch/Super3DXPlus/data/</code>.</li>
+            <li data-i18n="step_1">Download the latest release ZIP containing <code>super3dx+nx.nro</code> from GitHub Releases.</li>
+            <li data-i18n="step_2">Place the homebrew at <code>sdmc:/switch/super3dx+nx/super3dx+nx.nro</code> (filename stays <code>super3dx+nx.nro</code> for compatibility).</li>
+            <li data-i18n="step_3">Copy your own legally obtained converted game assets into <code>sdmc:/switch/super3dx+nx/data/</code>.</li>
             <li data-i18n="step_4">Launch via <strong>Title Takeover</strong> (hold <code>R</code> on any game) or an <strong>NSP Forwarder</strong>. <em>Applet Mode is not supported.</em></li>
           </ol>
         </div>
@@ -689,9 +997,9 @@
         <div class="notice-card">
           <h3 data-i18n="notice_title">Important Notices</h3>
           <ul>
-            <li data-i18n="n_1"><strong>No Copyrighted Assets:</strong> Release includes the <code>.nro</code> binary only. No ROMs or <code>data/</code> files are distributed.</li>
-            <li data-i18n="n_2"><strong>Windows Defender False Positive:</strong> Unsigned homebrew archives can trigger Windows Security. Add your extraction folder to Exclusions if blocked.</li>
-            <li data-i18n="n_3"><strong>Known Issue:</strong> Minor visual glitch in 10 Outrun mode (missing boundary lines / brief blue flash). Does not crash.</li>
+            <li data-i18n="n_1"><strong>Code-Only Release:</strong> Downloads include the <code>.nro</code> binary only. No ROMs, dumps, or <code>data/</code> files are distributed.</li>
+            <li data-i18n="n_2"><strong>Auto-Log Troubleshooting:</strong> If you encounter a black screen or crash, check <code>sdmc:/switch/super3dx+nx/save/log.txt</code>.</li>
+            <li data-i18n="n_3"><strong>Windows Defender False Positive:</strong> Unsigned homebrew archives can trigger Windows Security. Add your extraction folder to Exclusions if blocked.</li>
           </ul>
         </div>
       </div>
@@ -700,11 +1008,11 @@
     <footer>
       <div>
         <strong>Credits:</strong>
-        <a href="https://github.com/smolderyguest/Super3DXPlus" target="_blank" rel="noopener">smolderyguest</a> &amp; Allannn-sudo (Original Recomp)
+        <a href="https://github.com/smolderyguest/Super3DXPlus" target="_blank" rel="noopener">smolderyguest</a> (Original Owner)
         &bull;
-        <a href="https://github.com/Holymagi" target="_blank" rel="noopener">Holymagi</a> (Switch Port)
-        &bull;
-        <a href="https://discord.gg/vGWFvkWpMM" target="_blank" rel="noopener">Discord</a>
+        <a href="https://github.com/Holymagi" target="_blank" rel="noopener">Holymagi</a>,
+        <strong>KILLERz</strong> &amp;
+        <a href="https://github.com/dev1ce369" target="_blank" rel="noopener">donkeykorg (dev1ce369)</a> (NSwitch3DX+ Team)
         &bull;
         <a href="https://donatekasaneproject.vercel.app/" target="_blank" rel="noopener" data-i18n="footer_donate">Support / Donate</a>
       </div>
@@ -712,26 +1020,47 @@
     </footer>
   </main>
 
+  <!-- Three.js CDN for 3D Controller Viewer -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
+    /* ================= i18n ================= */
     const dict = {
       en: {
-        nav_controls: "Joy-Con Guide",
+        nav_team: "Developers",
+        nav_controls: "3D Controls",
         nav_install: "Install",
         nav_donate: "Support Us",
+        hero_badge: "Formerly Super3DX+ NX • Rebranded to NSwitch3DX+",
         hero_top: "Wangan arcade,",
         hero_bottom: "on Nintendo Switch.",
-        hero_desc: "Unofficial Nintendo Switch homebrew port of Wangan Midnight Maximum Tune 3DX+ (Super3DXPlus recompilation by smolderyguest), tuned for smooth 60 FPS gameplay and reliable save persistence.",
-        btn_download: "Download v1.0.1 (.zip)",
-        btn_github: "GitHub Repo",
-        btn_discord: "Join Discord",
+        hero_desc: "Unofficial Nintendo Switch homebrew port of Wangan Midnight Maximum Tune 3DX+ (based on the original Super3DXPlus recompilation by smolderyguest), featuring 60 FPS gameplay, touchscreen menus, and Online/LAN Versus.",
+        btn_download: "Download Latest (.zip)",
+        btn_github: "Explore GitHub Repo",
         btn_donate: "♥ Donate",
-        card1_eyebrow: "FEATURED RELEASE",
-        card1_desc: "Native Switch .nro build with OpenGL ES 3.2 & SDL2. Runs at full 60 FPS with no overclock required and full Horizon FS / FAT32 save support.",
+        card1_eyebrow: "UPCOMING RELEASE",
+        card1_desc: "Native Switch <code>super3dx+nx.nro</code> build with OpenGL ES 3.2 & SDL2. Includes touchscreen menu support, Online/LAN Versus, auto-logging (<code>save/log.txt</code>), and Export (English) support.",
         card2_eyebrow: "COMPATIBILITY & STATUS",
         card2_title: "Build Matrix",
-        row_save: "Garage & Ranking Save",
-        ctrl_title: "Joy-Con & Controller Guide",
-        ctrl_sub: "Supports Handheld Mode, Dual Joy-Con (Paired L+R), and Nintendo Switch Pro Controller.",
+        row_mp: "Online / LAN Versus & Touch",
+        team_title: "Developers & Original Creator",
+        team_sub: "Built by the NSwitch3DX+ Switch porting team, based on the upstream Super3DXPlus / Re3DX+ project.",
+        role_owner: "Original Owner / Upstream",
+        desc_owner: "Creator of the original Super3DXPlus / Re3DX+ recompilation engine that makes this Switch port possible.",
+        btn_upstream: "Original Repo",
+        role_lead: "Switch Port Lead",
+        role_teto: "🥖 Kasane Teto Fan",
+        desc_holymagi: "NSwitch3DX+ branding, Switch CFW testing, Horizon FS / FAT32 save-data fix, and web portal maintainer.",
+        role_coowner1: "1st Co-Owner",
+        desc_killerz: "First Co-Owner of NSwitch3DX+, multiplayer/LAN testing, and community management.",
+        role_coowner: "Co-Owner & Port Dev",
+        desc_donkeykorg: "Switch SDL2 entry point, touchscreen menus, LAN/Online Versus socket diagnostics, READY-button fix, and build tooling (GitHub: dev1ce369).",
+        role_tester: "Tester",
+        desc_raku: "Early Access build tester, bug reporting, and gameplay stability feedback.",
+        desc_miskokso: "Early Access build tester, save-data verification, and region compatibility testing.",
+        ctrl_title: "Interactive 3D Controller Mapping",
+        ctrl_sub: "Switch between supported controllers and hover/tap any action to highlight its button in 3D.",
+        hud_hover: "Hover a key",
+        hud_drag: "🖱️ Drag to rotate 360°",
         c_steer: "Steer / Menu Navigation",
         c_gas: "Gas / Accelerate",
         c_brake: "Brake",
@@ -741,40 +1070,58 @@
         c_back: "Interrupt / Back",
         c_start: "Start / Pause",
         c_coin: "Insert Coin / Service",
-        tip_title: "Joy-Con Tips:",
+        tip_title: "Controller & Touch Tips:",
         tip_1: "• Pair both Joy-Cons as <strong>Dual Joy-Con</strong> (not single sideways) via Switch Home Menu → Controllers → Change Grip/Order before launching.",
-        tip_2: "• On <strong>Eden Emulator</strong>, set Player 1 to <em>Pro Controller</em> or <em>Dual Joy-Con</em>.",
-        tip_3: "• Right Stick shifter support is planned for a future update.",
+        tip_2: "• Arcade menus can be tapped directly using the Switch <strong>Touchscreen</strong>.",
+        tip_3: "• <strong>PS5 DualSense</strong> & <strong>Xbox 360</strong> work via <em>Mission Control</em> on Switch CFW or directly on <em>Eden Emulator</em>.",
         inst_title: "How to Install",
         inst_sub: "Clean SD card folder layout ready to extract directly to your Switch.",
-        step_1: "Download <code>Super3DXPlus-NX_v1.0.1.zip</code> from the GitHub Releases page.",
-        step_2: "Extract the archive directly to the root of your SD card (<code>sdmc:/</code>).",
-        step_3: "Copy your own legally obtained game assets into <code>sdmc:/switch/Super3DXPlus/data/</code>.",
+        step_1: "Download the latest release ZIP containing <code>super3dx+nx.nro</code> from GitHub Releases.",
+        step_2: "Place the homebrew at <code>sdmc:/switch/super3dx+nx/super3dx+nx.nro</code> (filename stays <code>super3dx+nx.nro</code> for compatibility).",
+        step_3: "Copy your own legally obtained converted game assets into <code>sdmc:/switch/super3dx+nx/data/</code>.",
         step_4: "Launch via <strong>Title Takeover</strong> (hold <code>R</code> on any game) or an <strong>NSP Forwarder</strong>. <em>Applet Mode is not supported.</em>",
         notice_title: "Important Notices",
-        n_1: "<strong>No Copyrighted Assets:</strong> Release includes the <code>.nro</code> binary only. No ROMs or <code>data/</code> files are distributed.",
-        n_2: "<strong>Windows Defender False Positive:</strong> Unsigned homebrew archives can trigger Windows Security. Add your extraction folder to Exclusions if blocked.",
-        n_3: "<strong>Known Issue:</strong> Minor visual glitch in 10 Outrun mode (missing boundary lines / brief blue flash). Does not crash.",
+        n_1: "<strong>Code-Only Release:</strong> Downloads include the <code>.nro</code> binary only. No ROMs, dumps, or <code>data/</code> files are distributed.",
+        n_2: "<strong>Auto-Log Troubleshooting:</strong> If you encounter a black screen or crash, check <code>sdmc:/switch/super3dx+nx/save/log.txt</code>.",
+        n_3: "<strong>Windows Defender False Positive:</strong> Unsigned homebrew archives can trigger Windows Security. Add your extraction folder to Exclusions if blocked.",
         footer_donate: "Support / Donate"
       },
       id: {
-        nav_controls: "Panduan Joy-Con",
+        nav_team: "Developer",
+        nav_controls: "Kontrol 3D",
         nav_install: "Cara Pasang",
         nav_donate: "Donasi",
+        hero_badge: "Sebelumnya Super3DX+ NX • Resmi Rebrand ke NSwitch3DX+",
         hero_top: "Balapan Wangan,",
         hero_bottom: "di Nintendo Switch.",
-        hero_desc: "Portingan homebrew unofficial Wangan Midnight Maximum Tune 3DX+ (berbasis recomp Super3DXPlus oleh smolderyguest), dioptimalkan untuk 60 FPS mulus dan save data yang aman.",
-        btn_download: "Download v1.0.1 (.zip)",
-        btn_github: "Repo GitHub",
-        btn_discord: "Gabung Discord",
+        hero_desc: "Portingan homebrew unofficial Wangan Midnight Maximum Tune 3DX+ (berbasis proyek asli Super3DXPlus oleh smolderyguest), hadir dengan gameplay 60 FPS, menu touchscreen, dan Online/LAN Versus.",
+        btn_download: "Download Terbaru (.zip)",
+        btn_github: "Buka Repo GitHub",
         btn_donate: "♥ Donasi",
-        card1_eyebrow: "RILIS TERBARU",
-        card1_desc: "Build native .nro Switch dengan OpenGL ES 3.2 & SDL2. Jalan 60 FPS tanpa perlu overclock dan perbaikan save data Horizon FS / FAT32.",
+        card1_eyebrow: "RILIS MENDATANG",
+        card1_desc: "Build native Switch <code>super3dx+nx.nro</code> dengan OpenGL ES 3.2 & SDL2. Mendukung layar sentuh di menu, Online/LAN Versus, auto-log (<code>save/log.txt</code>), dan versi Export (English).",
         card2_eyebrow: "KOMPATIBILITAS & STATUS",
         card2_title: "Status Build",
-        row_save: "Save Garage & Ranking",
-        ctrl_title: "Panduan Joy-Con & Kontroler",
-        ctrl_sub: "Mendukung Mode Handheld, Dual Joy-Con (L+R terpasang bersamaan), dan Pro Controller.",
+        row_mp: "Online / LAN Versus & Touch",
+        team_title: "Tim Developer & Pemilik Asli",
+        team_sub: "Dikembangkan oleh tim portingan Switch NSwitch3DX+, berbasis proyek upstream Super3DXPlus / Re3DX+.",
+        role_owner: "Pemilik Asli / Upstream",
+        desc_owner: "Pembuat asli engine recompilation Super3DXPlus / Re3DX+ yang menjadi dasar dari portingan Nintendo Switch ini.",
+        btn_upstream: "Repo Asli",
+        role_lead: "Lead Port Switch",
+        role_teto: "🥖 Fans Kasane Teto",
+        desc_holymagi: "Branding NSwitch3DX+, pengujian Switch CFW, perbaikan save-data Horizon FS / FAT32, dan pengelola web portal.",
+        role_coowner1: "Co-Owner Pertama",
+        desc_killerz: "Co-Owner pertama NSwitch3DX+, pengujian multiplayer/LAN, dan pengelolaan komunitas.",
+        role_coowner: "Co-Owner & Port Dev",
+        desc_donkeykorg: "Entry point SDL2 Switch, menu touchscreen, diagnostik socket LAN/Online Versus, perbaikan tombol READY, dan alat build (GitHub: dev1ce369).",
+        role_tester: "Tester",
+        desc_raku: "Tester build Early Access, pelaporan bug, dan pengujian stabilitas gameplay.",
+        desc_miskokso: "Tester build Early Access, verifikasi save-data, dan pengujian kompatibilitas region.",
+        ctrl_title: "Mapping Kontroler 3D Interaktif",
+        ctrl_sub: "Pilih tipe kontroler dan arahkan kursor / tap aksi untuk menyalakan tombolnya secara 3D.",
+        hud_hover: "Arahkan ke tombol",
+        hud_drag: "🖱️ Geser untuk putar 360°",
         c_steer: "Setir / Navigasi Menu",
         c_gas: "Gas / Akselerasi",
         c_brake: "Rem",
@@ -784,28 +1131,403 @@
         c_back: "Batal / Kembali",
         c_start: "Start / Pause",
         c_coin: "Insert Coin / Service",
-        tip_title: "Tips Joy-Con:",
+        tip_title: "Tips Kontroler & Touch:",
         tip_1: "• Pastikan kedua Joy-Con disambungkan sebagai <strong>Dual Joy-Con</strong> (bukan mode miring satuan) lewat menu Controllers → Change Grip/Order sebelum membuka game.",
-        tip_2: "• Di <strong>Eden Emulator</strong>, atur Player 1 ke <em>Pro Controller</em> atau <em>Dual Joy-Con</em>.",
-        tip_3: "• Dukungan shifter Analog Kanan (Right Stick) direncanakan untuk update mendatang.",
+        tip_2: "• Menu bergaya arcade bisa langsung disentuh lewat <strong>Touchscreen</strong> Switch.",
+        tip_3: "• <strong>PS5 DualSense</strong> & <strong>Xbox 360</strong> bisa dipakai lewat <em>Mission Control</em> di Switch CFW atau langsung di <em>Eden Emulator</em>.",
         inst_title: "Cara Instalasi",
         inst_sub: "Struktur folder SD Card siap pakai, tinggal ekstrak langsung ke Switch.",
-        step_1: "Download <code>Super3DXPlus-NX_v1.0.1.zip</code> dari halaman GitHub Releases.",
-        step_2: "Ekstrak arsipnya langsung ke root SD Card kamu (<code>sdmc:/</code>).",
-        step_3: "Salin aset game milikmu sendiri ke dalam folder <code>sdmc:/switch/Super3DXPlus/data/</code>.",
+        step_1: "Download file ZIP rilis terbaru berisi <code>super3dx+nx.nro</code> dari halaman GitHub Releases.",
+        step_2: "Letakkan file di <code>sdmc:/switch/super3dx+nx/super3dx+nx.nro</code> (nama file tetap <code>super3dx+nx.nro</code> demi kompatibilitas).",
+        step_3: "Salin aset game hasil konversi milikmu sendiri ke <code>sdmc:/switch/super3dx+nx/data/</code>.",
         step_4: "Jalankan lewat <strong>Title Takeover</strong> (tahan <code>R</code> saat buka game) atau <strong>NSP Forwarder</strong>. <em>Applet Mode (Album) tidak didukung.</em>",
         notice_title: "Catatan Penting",
-        n_1: "<strong>Bebas Aset Berhak Cipta:</strong> Rilis ini hanya berisi binary <code>.nro</code>. Tidak menyertakan ROM atau isi folder <code>data/</code>.",
-        n_2: "<strong>False Positive Windows Defender:</strong> File homebrew tanpa sertifikat resmi kadang terdeteksi Windef. Tambahkan folder ekstrak ke Exclusions di Windows Security.",
-        n_3: "<strong>Known Issue:</strong> Glitch visual minor di mode 10 Outrun (garis batas hilang / layar berkedip biru sesaat). Tidak menyebabkan crash.",
+        n_1: "<strong>Rilis Khusus Kode:</strong> Download hanya berisi binary <code>.nro</code>. Tidak menyertakan ROM, dump, atau isi folder <code>data/</code>.",
+        n_2: "<strong>Cek Log Otomatis:</strong> Jika mengalami layar hitam atau crash, cek file <code>sdmc:/switch/super3dx+nx/save/log.txt</code>.",
+        n_3: "<strong>False Positive Windows Defender:</strong> File homebrew tanpa sertifikat resmi kadang terdeteksi Windef. Tambahkan folder ekstrak ke Exclusions di Windows Security.",
         footer_donate: "Dukung / Donasi"
       }
     };
 
     let currentLang = "en";
-    const toggleBtn = document.getElementById("langToggle");
+    let currentPad = "handheld";
 
-    toggleBtn.addEventListener("click", () => {
+    /* ================= Controller Mappings ================= */
+    const padConfigs = {
+      handheld: {
+        badge: "Nintendo Switch Handheld",
+        keys: [
+          { i18n: "c_steer", kbd: "Left Stick / D-Pad / Touch", parts: ["lstick", "dpad", "screen"], tilt: "front" },
+          { i18n: "c_gas",   kbd: "ZR",        parts: ["zr"],             tilt: "top" },
+          { i18n: "c_brake", kbd: "ZL",        parts: ["zl"],             tilt: "top" },
+          { i18n: "c_up",    kbd: "R / A",     parts: ["r", "east"],      tilt: "front" },
+          { i18n: "c_down",  kbd: "L / B",     parts: ["l", "south"],     tilt: "front" },
+          { i18n: "c_view",  kbd: "Y",         parts: ["west"],           tilt: "front" },
+          { i18n: "c_back",  kbd: "X",         parts: ["north"],          tilt: "front" },
+          { i18n: "c_start", kbd: "+ (Plus)",  parts: ["start"],          tilt: "front" },
+          { i18n: "c_coin",  kbd: "- (Minus)", parts: ["select"],         tilt: "front" }
+        ]
+      },
+      procon: {
+        badge: "Nintendo Switch Pro Controller",
+        keys: [
+          { i18n: "c_steer", kbd: "Left Stick / D-Pad", parts: ["lstick", "dpad"], tilt: "front" },
+          { i18n: "c_gas",   kbd: "ZR",        parts: ["zr"],             tilt: "top" },
+          { i18n: "c_brake", kbd: "ZL",        parts: ["zl"],             tilt: "top" },
+          { i18n: "c_up",    kbd: "R / A",     parts: ["r", "east"],      tilt: "front" },
+          { i18n: "c_down",  kbd: "L / B",     parts: ["l", "south"],     tilt: "front" },
+          { i18n: "c_view",  kbd: "Y",         parts: ["west"],           tilt: "front" },
+          { i18n: "c_back",  kbd: "X",         parts: ["north"],          tilt: "front" },
+          { i18n: "c_start", kbd: "+ (Plus)",  parts: ["start"],          tilt: "front" },
+          { i18n: "c_coin",  kbd: "- (Minus)", parts: ["select"],         tilt: "front" }
+        ]
+      },
+      dualsense: {
+        badge: "PlayStation 5 DualSense",
+        keys: [
+          { i18n: "c_steer", kbd: "Left Stick / D-Pad", parts: ["lstick", "dpad"], tilt: "front" },
+          { i18n: "c_gas",   kbd: "R2",            parts: ["zr"],          tilt: "top" },
+          { i18n: "c_brake", kbd: "L2",            parts: ["zl"],          tilt: "top" },
+          { i18n: "c_up",    kbd: "R1 / ○ (East)", parts: ["r", "east"],   tilt: "front" },
+          { i18n: "c_down",  kbd: "L1 / × (South)",parts: ["l", "south"],  tilt: "front" },
+          { i18n: "c_view",  kbd: "□ (Square)",    parts: ["west"],        tilt: "front" },
+          { i18n: "c_back",  kbd: "△ (Triangle)",  parts: ["north"],       tilt: "front" },
+          { i18n: "c_start", kbd: "Options (≡)",   parts: ["start"],       tilt: "front" },
+          { i18n: "c_coin",  kbd: "Create",        parts: ["select"],      tilt: "front" }
+        ]
+      },
+      xbox360: {
+        badge: "Xbox 360 Gamepad",
+        keys: [
+          { i18n: "c_steer", kbd: "Left Stick / D-Pad", parts: ["lstick", "dpad"], tilt: "front" },
+          { i18n: "c_gas",   kbd: "RT",            parts: ["zr"],          tilt: "top" },
+          { i18n: "c_brake", kbd: "LT",            parts: ["zl"],          tilt: "top" },
+          { i18n: "c_up",    kbd: "RB / B (East)", parts: ["r", "east"],   tilt: "front" },
+          { i18n: "c_down",  kbd: "LB / A (South)",parts: ["l", "south"],  tilt: "front" },
+          { i18n: "c_view",  kbd: "X",             parts: ["west"],        tilt: "front" },
+          { i18n: "c_back",  kbd: "Y",             parts: ["north"],       tilt: "front" },
+          { i18n: "c_start", kbd: "Start",         parts: ["start"],       tilt: "front" },
+          { i18n: "c_coin",  kbd: "Back",          parts: ["select"],      tilt: "front" }
+        ]
+      }
+    };
+
+    /* ================= Three.js 3D Engine ================= */
+    const canvas = document.getElementById("controllerCanvas");
+    const stageWrap = document.getElementById("stageWrap");
+    const padBadge = document.getElementById("padBadge");
+    const activePartBadge = document.getElementById("activePartBadge");
+    const controlsList = document.getElementById("controlsList");
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(36, 1, 0.1, 100);
+    camera.position.set(0, 0.45, 7.2);
+
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.75));
+    const keyLight = new THREE.DirectionalLight(0xffffff, 0.95);
+    keyLight.position.set(4, 6, 7);
+    scene.add(keyLight);
+
+    const pinkRim = new THREE.PointLight(0xff5c8a, 1.8, 16);
+    pinkRim.position.set(-4, -2, 4);
+    scene.add(pinkRim);
+
+    const blueRim = new THREE.PointLight(0x3b82f6, 1.5, 16);
+    blueRim.position.set(4, 2, -4);
+    scene.add(blueRim);
+
+    let rootGroup = new THREE.Group();
+    scene.add(rootGroup);
+
+    let partsMap = {};
+    let highlightedParts = [];
+    let isDragging = false;
+    let prevPointer = { x: 0, y: 0 };
+    let targetRotX = 0.22;
+    let targetRotY = -0.18;
+
+    function registerPart(name, mesh) {
+      if (!partsMap[name]) partsMap[name] = [];
+      mesh.userData.origColor = mesh.material.color.getHex();
+      mesh.userData.origEmissive = mesh.material.emissive ? mesh.material.emissive.getHex() : 0x000000;
+      mesh.userData.origEmissiveInt = mesh.material.emissiveIntensity || 0;
+      partsMap[name].push(mesh);
+    }
+
+    function makeMat(color, roughness = 0.42, metalness = 0.15, emissive = 0x000000, emissiveIntensity = 0) {
+      return new THREE.MeshStandardMaterial({ color, roughness, metalness, emissive, emissiveIntensity });
+    }
+
+    function addPart(group, geo, mat, pos, rot = [0, 0, 0], partKey = null) {
+      const m = new THREE.Mesh(geo, mat);
+      m.position.set(...pos);
+      m.rotation.set(...rot);
+      group.add(m);
+      if (partKey) registerPart(partKey, m);
+      return m;
+    }
+
+    function addStick(group, x, y, z, partKey) {
+      const stem = addPart(group, new THREE.CylinderGeometry(0.16, 0.19, 0.24, 20), makeMat(0x1b1b22, 0.5), [x, y, z + 0.08], [Math.PI / 2, 0, 0], partKey);
+      addPart(group, new THREE.CylinderGeometry(0.29, 0.27, 0.1, 24), makeMat(0x111116, 0.65), [x, y, z + 0.2], [Math.PI / 2, 0, 0], partKey);
+      return stem;
+    }
+
+    function addDpad(group, x, y, z, isSplit = false) {
+      const mat = makeMat(0x18181f, 0.45);
+      if (isSplit) {
+        const g = new THREE.CylinderGeometry(0.11, 0.11, 0.1, 16);
+        addPart(group, g, mat.clone(), [x, y + 0.21, z], [Math.PI / 2, 0, 0], "dpad");
+        addPart(group, g, mat.clone(), [x, y - 0.21, z], [Math.PI / 2, 0, 0], "dpad");
+        addPart(group, g, mat.clone(), [x - 0.21, y, z], [Math.PI / 2, 0, 0], "dpad");
+        addPart(group, g, mat.clone(), [x + 0.21, y, z], [Math.PI / 2, 0, 0], "dpad");
+      } else {
+        addPart(group, new THREE.BoxGeometry(0.56, 0.18, 0.12), mat.clone(), [x, y, z], [0, 0, 0], "dpad");
+        addPart(group, new THREE.BoxGeometry(0.18, 0.56, 0.12), mat.clone(), [x, y, z], [0, 0, 0], "dpad");
+      }
+    }
+
+    function addFaceButtons(group, x, y, z, colors = [0x1c1c24, 0x1c1c24, 0x1c1c24, 0x1c1c24]) {
+      const r = 0.24;
+      const g = new THREE.CylinderGeometry(0.12, 0.12, 0.11, 20);
+      addPart(group, g, makeMat(colors[0], 0.35), [x, y + r, z], [Math.PI / 2, 0, 0], "north");
+      addPart(group, g, makeMat(colors[1], 0.35), [x + r, y, z], [Math.PI / 2, 0, 0], "east");
+      addPart(group, g, makeMat(colors[2], 0.35), [x, y - r, z], [Math.PI / 2, 0, 0], "south");
+      addPart(group, g, makeMat(colors[3], 0.35), [x - r, y, z], [Math.PI / 2, 0, 0], "west");
+    }
+
+    /* ---- Build Models ---- */
+    function buildSwitchHandheld(g) {
+      addPart(g, new THREE.BoxGeometry(3.2, 1.85, 0.28), makeMat(0x18181f, 0.4, 0.2), [0, 0, 0]);
+      addPart(g, new THREE.BoxGeometry(2.86, 1.58, 0.04), makeMat(0x1f0d18, 0.15, 0.3, 0xff5c8a, 0.18), [0, 0, 0.14], [0, 0, 0], "screen");
+
+      addPart(g, new THREE.BoxGeometry(0.82, 1.85, 0.3), makeMat(0x00b4e5, 0.35, 0.1), [-2.02, 0, 0]);
+      addPart(g, new THREE.BoxGeometry(0.82, 1.85, 0.3), makeMat(0xff4c4c, 0.35, 0.1), [2.02, 0, 0]);
+
+      addStick(g, -2.02, 0.35, 0.14, "lstick");
+      addDpad(g, -2.02, -0.35, 0.16, true);
+      addFaceButtons(g, 2.02, 0.35, 0.16);
+      addStick(g, 2.02, -0.35, 0.14, "rstick");
+
+      addPart(g, new THREE.BoxGeometry(0.18, 0.05, 0.08), makeMat(0x15151a), [-1.78, 0.72, 0.16], [0, 0, 0], "select");
+      addPart(g, new THREE.BoxGeometry(0.18, 0.05, 0.08), makeMat(0x15151a), [1.78, 0.72, 0.16], [0, 0, 0], "start");
+      addPart(g, new THREE.BoxGeometry(0.05, 0.18, 0.08), makeMat(0x15151a), [1.78, 0.72, 0.16], [0, 0, 0], "start");
+
+      addPart(g, new THREE.BoxGeometry(0.68, 0.12, 0.2), makeMat(0x22222c), [-2.02, 0.96, 0.02], [0, 0, 0], "l");
+      addPart(g, new THREE.BoxGeometry(0.68, 0.12, 0.2), makeMat(0x22222c), [2.02, 0.96, 0.02], [0, 0, 0], "r");
+      addPart(g, new THREE.BoxGeometry(0.56, 0.22, 0.24), makeMat(0x15151c), [-2.02, 0.88, -0.18], [0.3, 0, 0], "zl");
+      addPart(g, new THREE.BoxGeometry(0.56, 0.22, 0.24), makeMat(0x15151c), [2.02, 0.88, -0.18], [0.3, 0, 0], "zr");
+    }
+
+    function buildProController(g) {
+      addPart(g, new THREE.BoxGeometry(2.6, 1.48, 0.52), makeMat(0x23242c, 0.35, 0.25), [0, 0.12, 0]);
+      addPart(g, new THREE.CylinderGeometry(0.42, 0.32, 1.5, 20), makeMat(0x181920, 0.55), [-1.32, -0.45, -0.02], [0, 0, -0.34]);
+      addPart(g, new THREE.CylinderGeometry(0.42, 0.32, 1.5, 20), makeMat(0x181920, 0.55), [1.32, -0.45, -0.02], [0, 0, 0.34]);
+
+      addStick(g, -0.82, 0.34, 0.25, "lstick");
+      addDpad(g, -0.46, -0.26, 0.27, false);
+      addFaceButtons(g, 0.86, 0.34, 0.27);
+      addStick(g, 0.46, -0.26, 0.25, "rstick");
+
+      addPart(g, new THREE.BoxGeometry(0.18, 0.06, 0.08), makeMat(0x3a3c48), [-0.3, 0.45, 0.27], [0, 0, 0], "select");
+      addPart(g, new THREE.BoxGeometry(0.18, 0.06, 0.08), makeMat(0x3a3c48), [0.3, 0.45, 0.27], [0, 0, 0], "start");
+      addPart(g, new THREE.BoxGeometry(0.06, 0.18, 0.08), makeMat(0x3a3c48), [0.3, 0.45, 0.27], [0, 0, 0], "start");
+      addPart(g, new THREE.CylinderGeometry(0.1, 0.1, 0.08, 16), makeMat(0x3a3c48), [0.22, 0.16, 0.27], [Math.PI / 2, 0, 0]);
+
+      addPart(g, new THREE.BoxGeometry(0.76, 0.16, 0.28), makeMat(0x16171d), [-0.88, 0.9, 0.08], [0, 0, 0.1], "l");
+      addPart(g, new THREE.BoxGeometry(0.76, 0.16, 0.28), makeMat(0x16171d), [0.88, 0.9, 0.08], [0, 0, -0.1], "r");
+      addPart(g, new THREE.BoxGeometry(0.68, 0.26, 0.32), makeMat(0x111117), [-0.88, 0.84, -0.22], [0.35, 0, 0.1], "zl");
+      addPart(g, new THREE.BoxGeometry(0.68, 0.26, 0.32), makeMat(0x111117), [0.88, 0.84, -0.22], [0.35, 0, -0.1], "zr");
+    }
+
+    function buildDualSense(g) {
+      addPart(g, new THREE.BoxGeometry(2.7, 1.38, 0.5), makeMat(0xeef1f6, 0.28, 0.08), [0, 0.14, 0]);
+      addPart(g, new THREE.BoxGeometry(1.5, 0.72, 0.52), makeMat(0x171820, 0.42), [0, -0.26, 0.01]);
+      addPart(g, new THREE.CylinderGeometry(0.38, 0.26, 1.6, 20), makeMat(0xeef1f6, 0.28), [-1.36, -0.5, -0.02], [0, 0, -0.28]);
+      addPart(g, new THREE.CylinderGeometry(0.38, 0.26, 1.6, 20), makeMat(0xeef1f6, 0.28), [1.36, -0.5, -0.02], [0, 0, 0.28]);
+
+      addPart(g, new THREE.BoxGeometry(1.06, 0.54, 0.08), makeMat(0xf5f7fa, 0.25), [0, 0.46, 0.25]);
+      addPart(g, new THREE.BoxGeometry(1.12, 0.58, 0.05), makeMat(0x3b82f6, 0.2, 0.1, 0x3b82f6, 0.9), [0, 0.46, 0.24]);
+
+      addStick(g, -0.46, -0.22, 0.25, "lstick");
+      addStick(g, 0.46, -0.22, 0.25, "rstick");
+      addDpad(g, -0.94, 0.32, 0.27, true);
+      addFaceButtons(g, 0.94, 0.32, 0.27, [0xdbe2ee, 0xdbe2ee, 0xdbe2ee, 0xdbe2ee]);
+
+      addPart(g, new THREE.BoxGeometry(0.08, 0.2, 0.08), makeMat(0xd0d6e2), [-0.66, 0.58, 0.26], [0, 0, 0.25], "select");
+      addPart(g, new THREE.BoxGeometry(0.08, 0.2, 0.08), makeMat(0xd0d6e2), [0.66, 0.58, 0.26], [0, 0, -0.25], "start");
+
+      addPart(g, new THREE.BoxGeometry(0.76, 0.14, 0.26), makeMat(0x16171d), [-0.94, 0.88, 0.08], [0, 0, 0.08], "l");
+      addPart(g, new THREE.BoxGeometry(0.76, 0.14, 0.26), makeMat(0x16171d), [0.94, 0.88, 0.08], [0, 0, -0.08], "r");
+      addPart(g, new THREE.BoxGeometry(0.68, 0.28, 0.34), makeMat(0x101116), [-0.94, 0.82, -0.22], [0.38, 0, 0.08], "zl");
+      addPart(g, new THREE.BoxGeometry(0.68, 0.28, 0.34), makeMat(0x101116), [0.94, 0.82, -0.22], [0.38, 0, -0.08], "zr");
+    }
+
+    function buildXbox360(g) {
+      addPart(g, new THREE.BoxGeometry(2.65, 1.48, 0.54), makeMat(0xd8dde4, 0.35, 0.12), [0, 0.1, 0]);
+      addPart(g, new THREE.CylinderGeometry(0.44, 0.3, 1.5, 20), makeMat(0xd8dde4, 0.35), [-1.34, -0.45, -0.02], [0, 0, -0.32]);
+      addPart(g, new THREE.CylinderGeometry(0.44, 0.3, 1.5, 20), makeMat(0xd8dde4, 0.35), [1.34, -0.45, -0.02], [0, 0, 0.32]);
+
+      addPart(g, new THREE.CylinderGeometry(0.22, 0.22, 0.1, 24), makeMat(0xc0c6cf, 0.2, 0.6), [0, 0.34, 0.27], [Math.PI / 2, 0, 0]);
+      addPart(g, new THREE.CylinderGeometry(0.16, 0.16, 0.11, 20), makeMat(0x22c55e, 0.2, 0.1, 0x22c55e, 0.75), [0, 0.34, 0.275], [Math.PI / 2, 0, 0]);
+
+      addStick(g, -0.86, 0.34, 0.26, "lstick");
+      addDpad(g, -0.46, -0.26, 0.28, false);
+      addFaceButtons(g, 0.88, 0.34, 0.28, [0xfacc15, 0xef4444, 0x22c55e, 0x3b82f6]);
+      addStick(g, 0.46, -0.26, 0.26, "rstick");
+
+      addPart(g, new THREE.CylinderGeometry(0.09, 0.09, 0.08, 16), makeMat(0x9aa2ad), [-0.36, 0.34, 0.27], [Math.PI / 2, 0, 0], "select");
+      addPart(g, new THREE.CylinderGeometry(0.09, 0.09, 0.08, 16), makeMat(0x9aa2ad), [0.36, 0.34, 0.27], [Math.PI / 2, 0, 0], "start");
+
+      addPart(g, new THREE.BoxGeometry(0.76, 0.16, 0.26), makeMat(0x9ca3af), [-0.88, 0.88, 0.08], [0, 0, 0.1], "l");
+      addPart(g, new THREE.BoxGeometry(0.76, 0.16, 0.26), makeMat(0x9ca3af), [0.88, 0.88, 0.08], [0, 0, -0.1], "r");
+      addPart(g, new THREE.BoxGeometry(0.62, 0.28, 0.34), makeMat(0x6b7280), [-0.88, 0.82, -0.22], [0.4, 0, 0.1], "zl");
+      addPart(g, new THREE.BoxGeometry(0.62, 0.28, 0.34), makeMat(0x6b7280), [0.88, 0.82, -0.22], [0.4, 0, -0.1], "zr");
+    }
+
+    function loadControllerModel(type) {
+      while (rootGroup.children.length > 0) {
+        const obj = rootGroup.children[0];
+        if (obj.geometry) obj.geometry.dispose();
+        if (obj.material) obj.material.dispose();
+        rootGroup.remove(obj);
+      }
+      partsMap = {};
+      highlightedParts = [];
+
+      if (type === "handheld") buildSwitchHandheld(rootGroup);
+      else if (type === "procon") buildProController(rootGroup);
+      else if (type === "dualsense") buildDualSense(rootGroup);
+      else if (type === "xbox360") buildXbox360(rootGroup);
+
+      targetRotX = 0.22;
+      targetRotY = -0.18;
+      padBadge.textContent = padConfigs[type].badge;
+      activePartBadge.textContent = dict[currentLang].hud_hover;
+    }
+
+    function setHighlight(partKeys, labelText = null, tiltMode = "front") {
+      Object.values(partsMap).flat().forEach(m => {
+        m.material.color.setHex(m.userData.origColor);
+        if (m.material.emissive) {
+          m.material.emissive.setHex(m.userData.origEmissive);
+          m.material.emissiveIntensity = m.userData.origEmissiveInt;
+        }
+      });
+
+      highlightedParts = [];
+      if (partKeys && partKeys.length) {
+        partKeys.forEach(k => {
+          if (partsMap[k]) highlightedParts.push(...partsMap[k]);
+        });
+        activePartBadge.textContent = labelText || dict[currentLang].hud_hover;
+        targetRotX = tiltMode === "top" ? 0.92 : 0.22;
+        targetRotY = tiltMode === "top" ? 0.0 : -0.12;
+      } else {
+        activePartBadge.textContent = dict[currentLang].hud_hover;
+        targetRotX = 0.22;
+        targetRotY = -0.18;
+      }
+    }
+
+    function renderControlsList() {
+      const cfg = padConfigs[currentPad];
+      controlsList.innerHTML = "";
+      cfg.keys.forEach(item => {
+        const row = document.createElement("div");
+        row.className = "control-item";
+        row.innerHTML = `
+          <span class="control-label" data-i18n="${item.i18n}">${dict[currentLang][item.i18n]}</span>
+          <span class="kbd">${item.kbd}</span>
+        `;
+        const activate = () => {
+          document.querySelectorAll(".control-item").forEach(el => el.classList.remove("active"));
+          row.classList.add("active");
+          setHighlight(item.parts, item.kbd, item.tilt);
+        };
+        row.addEventListener("mouseenter", activate);
+        row.addEventListener("click", activate);
+        row.addEventListener("mouseleave", () => {
+          row.classList.remove("active");
+          setHighlight([]);
+        });
+        controlsList.appendChild(row);
+      });
+    }
+
+    // Tab switching
+    document.querySelectorAll(".pad-tab").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".pad-tab").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentPad = btn.dataset.pad;
+        loadControllerModel(currentPad);
+        renderControlsList();
+      });
+    });
+
+    // Drag to rotate 3D model
+    function onPointerDown(e) {
+      isDragging = true;
+      const pt = e.touches ? e.touches[0] : e;
+      prevPointer = { x: pt.clientX, y: pt.clientY };
+    }
+    function onPointerMove(e) {
+      if (!isDragging) return;
+      const pt = e.touches ? e.touches[0] : e;
+      const dx = pt.clientX - prevPointer.x;
+      const dy = pt.clientY - prevPointer.y;
+      targetRotY += dx * 0.01;
+      targetRotX = Math.max(-1.2, Math.min(1.3, targetRotX + dy * 0.01));
+      prevPointer = { x: pt.clientX, y: pt.clientY };
+    }
+    function onPointerUp() { isDragging = false; }
+
+    stageWrap.addEventListener("mousedown", onPointerDown);
+    window.addEventListener("mousemove", onPointerMove);
+    window.addEventListener("mouseup", onPointerUp);
+    stageWrap.addEventListener("touchstart", onPointerDown, { passive: true });
+    window.addEventListener("touchmove", onPointerMove, { passive: true });
+    window.addEventListener("touchend", onPointerUp);
+
+    function resizeRenderer() {
+      const w = stageWrap.clientWidth || 400;
+      const h = stageWrap.clientHeight || 360;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+    window.addEventListener("resize", resizeRenderer);
+
+    // Animation loop
+    const clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+
+      rootGroup.rotation.x += (targetRotX - rootGroup.rotation.x) * 0.09;
+      rootGroup.rotation.y += (targetRotY - rootGroup.rotation.y) * 0.09;
+      rootGroup.position.y = Math.sin(t * 1.8) * 0.05;
+
+      if (highlightedParts.length) {
+        const pulse = 0.75 + Math.sin(t * 8) * 0.45;
+        highlightedParts.forEach(m => {
+          m.material.color.setHex(0xff5c8a);
+          if (m.material.emissive) {
+            m.material.emissive.setHex(0xff2e6d);
+            m.material.emissiveIntensity = pulse;
+          }
+        });
+      }
+
+      renderer.render(scene, camera);
+    }
+
+    // Language toggle
+    document.getElementById("langToggle").addEventListener("click", () => {
       currentLang = currentLang === "en" ? "id" : "en";
       document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
@@ -813,7 +1535,14 @@
           el.innerHTML = dict[currentLang][key];
         }
       });
+      renderControlsList();
     });
+
+    // Init
+    resizeRenderer();
+    loadControllerModel(currentPad);
+    renderControlsList();
+    animate();
   </script>
 </body>
 </html>
