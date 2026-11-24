@@ -111,7 +111,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 1.6rem;
+      gap: 1.5rem;
     }
 
     .nav-links a {
@@ -707,6 +707,80 @@
       color: var(--text);
     }
 
+    /* Version History / Changelog */
+    .changelog-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+    }
+
+    .version-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.45rem 1.6rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .version-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .version-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .version-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .log-col h4 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.55rem;
+      color: var(--pill-green-text);
+    }
+
+    .log-col.bugs h4 {
+      color: var(--warn);
+    }
+
+    .log-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      font-size: 0.87rem;
+      color: var(--muted);
+    }
+
+    .log-col ul li::before {
+      content: "• ";
+      color: var(--pink);
+      font-weight: 700;
+    }
+
+    .log-col.bugs ul li::before {
+      content: "⚠ ";
+      color: var(--warn);
+    }
+
     /* Footer */
     footer {
       margin-top: 5rem;
@@ -738,7 +812,8 @@
         gap: 2.25rem;
       }
       .controls-3d-layout,
-      .install-grid {
+      .install-grid,
+      .version-grid {
         grid-template-columns: 1fr;
       }
       .stage-wrap {
@@ -766,6 +841,7 @@
         <a href="#team" data-i18n="nav_team">Developers</a>
         <a href="#controls" data-i18n="nav_controls">3D Controls</a>
         <a href="#install" data-i18n="nav_install">Install</a>
+        <a href="#changelog" data-i18n="nav_changelog">Changelog</a>
         <a href="https://github.com/Holymagi/Super3DXPlus-NX" target="_blank" rel="noopener">GitHub</a>
         <a href="https://donatekasaneproject.vercel.app/" target="_blank" rel="noopener" class="nav-donate" data-i18n="nav_donate">Support Us</a>
       </div>
@@ -1006,6 +1082,101 @@
       </div>
     </section>
 
+    <!-- Version History & Known Bugs -->
+    <section id="changelog">
+      <div class="section-header">
+        <h2 data-i18n="log_title">Version History &amp; Known Bugs</h2>
+        <p data-i18n="log_sub">Full release changelog, fixes, and tracked bugs for every NSwitch3DX+ build.</p>
+      </div>
+
+      <div class="changelog-list">
+        <!-- v1.0.2 Early Access -->
+        <div class="version-card">
+          <div class="version-head">
+            <div class="version-title">
+              <span>v1.0.2</span>
+              <span class="pill pill-pink">Early Access / WIP</span>
+              <span class="pill pill-blue">NSwitch3DX+ Rebrand</span>
+            </div>
+            <span class="eyebrow">2026</span>
+          </div>
+          <div class="version-grid">
+            <div class="log-col">
+              <h4 data-i18n="lbl_changes">What's New</h4>
+              <ul>
+                <li data-i18n="v102_c1">Official rebrand from Super3DX+ NX to <strong>NSwitch3DX+</strong> (binary stays <code>super3dx+nx.nro</code>).</li>
+                <li data-i18n="v102_c2">Added <strong>Touchscreen</strong> menu navigation &amp; <strong>Online / LAN Versus</strong> support.</li>
+                <li data-i18n="v102_c3">Added automatic diagnostic logging to <code>save/log.txt</code>.</li>
+                <li data-i18n="v102_c4">Export (English) version supported; Japan (JPN) version in testing.</li>
+              </ul>
+            </div>
+            <div class="log-col bugs">
+              <h4 data-i18n="lbl_bugs">Known Bugs</h4>
+              <ul>
+                <li data-i18n="v102_b1"><strong>Save-Data Overwrite Bug (Fixing):</strong> <code>garage1: could not move the new file in</code> on FAT32/Horizon FS &amp; Eden causes new cars/HP upgrades to revert after restart. Fix in progress.</li>
+                <li data-i18n="v102_b2"><strong>NAT / UPnP:</strong> <code>nat: ssdp found nothing</code> may appear on emulators or strict routers; manual port forwarding is required for Online Versus.</li>
+                <li data-i18n="v102_b3"><strong>10 Outrun Visual Glitch:</strong> Boundary lines may disappear with a brief blue flash (does not crash).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- v1.0.1 Hotfix -->
+        <div class="version-card">
+          <div class="version-head">
+            <div class="version-title">
+              <span>v1.0.1</span>
+              <span class="pill pill-green">Stable Hotfix</span>
+            </div>
+            <span class="eyebrow">2026</span>
+          </div>
+          <div class="version-grid">
+            <div class="log-col">
+              <h4 data-i18n="lbl_changes">What's New</h4>
+              <ul>
+                <li data-i18n="v101_c1">Fixed <code>garage</code> &amp; <code>ranking</code> save-data persistence on Horizon FS / FAT32 and Eden Emulator.</li>
+                <li data-i18n="v101_c2">Stable 60 FPS native gameplay on Switch CFW without overclocking.</li>
+              </ul>
+            </div>
+            <div class="log-col bugs">
+              <h4 data-i18n="lbl_bugs">Known Bugs</h4>
+              <ul>
+                <li data-i18n="v101_b1"><strong>10 Outrun Mode:</strong> Minor rendering glitch (missing boundary lines / brief blue flash near the 10th rival). No crash.</li>
+                <li data-i18n="v101_b2"><strong>Applet Mode:</strong> Launching from Album is not supported (requires Title Takeover or NSP Forwarder).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- v1.0.0 Initial -->
+        <div class="version-card">
+          <div class="version-head">
+            <div class="version-title">
+              <span>v1.0.0</span>
+              <span class="pill pill-blue">Initial Port</span>
+            </div>
+            <span class="eyebrow">2026</span>
+          </div>
+          <div class="version-grid">
+            <div class="log-col">
+              <h4 data-i18n="lbl_changes">What's New</h4>
+              <ul>
+                <li data-i18n="v100_c1">First unofficial Nintendo Switch homebrew port (<code>devkitPro</code>, <code>libnx</code>, <code>SDL2</code>, OpenGL ES 3.2).</li>
+                <li data-i18n="v100_c2">Handheld, Dual Joy-Con, and Pro Controller support.</li>
+              </ul>
+            </div>
+            <div class="log-col bugs">
+              <h4 data-i18n="lbl_bugs">Known Bugs</h4>
+              <ul>
+                <li data-i18n="v100_b1"><strong>Save-Data Issue:</strong> <code>rename()</code> overwrite failed on FAT32/Switch (fixed in v1.0.1).</li>
+                <li data-i18n="v100_b2">No touchscreen menu or Online/LAN Versus support yet.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer>
       <div>
         <strong>Credits:</strong>
@@ -1030,6 +1201,7 @@
         nav_team: "Developers",
         nav_controls: "3D Controls",
         nav_install: "Install",
+        nav_changelog: "Changelog",
         nav_donate: "Support Us",
         hero_badge: "Formerly Super3DX+ NX • Rebranded to NSwitch3DX+",
         hero_top: "Wangan arcade,",
@@ -1085,12 +1257,32 @@
         n_1: "<strong>Code-Only Release:</strong> Downloads include the <code>.nro</code> binary only. No ROMs, dumps, or <code>data/</code> files are distributed.",
         n_2: "<strong>Auto-Log Troubleshooting:</strong> If you encounter a black screen or crash, check <code>sdmc:/switch/super3dx+nx/save/log.txt</code>.",
         n_3: "<strong>Windows Defender False Positive:</strong> Unsigned homebrew archives can trigger Windows Security. Add your extraction folder to Exclusions if blocked.",
+        log_title: "Version History & Known Bugs",
+        log_sub: "Full release changelog, fixes, and tracked bugs for every NSwitch3DX+ build.",
+        lbl_changes: "What's New",
+        lbl_bugs: "Known Bugs",
+        v102_c1: "Official rebrand from Super3DX+ NX to <strong>NSwitch3DX+</strong> (binary stays <code>super3dx+nx.nro</code>).",
+        v102_c2: "Added <strong>Touchscreen</strong> menu navigation & <strong>Online / LAN Versus</strong> support.",
+        v102_c3: "Added automatic diagnostic logging to <code>save/log.txt</code>.",
+        v102_c4: "Export (English) version supported; Japan (JPN) version in testing.",
+        v102_b1: "<strong>Save-Data Overwrite Bug (Fixing):</strong> <code>garage1: could not move the new file in</code> on FAT32/Horizon FS & Eden causes new cars/HP upgrades to revert after restart. Fix in progress.",
+        v102_b2: "<strong>NAT / UPnP:</strong> <code>nat: ssdp found nothing</code> may appear on emulators or strict routers; manual port forwarding is required for Online Versus.",
+        v102_b3: "<strong>10 Outrun Visual Glitch:</strong> Boundary lines may disappear with a brief blue flash (does not crash).",
+        v101_c1: "Fixed <code>garage</code> & <code>ranking</code> save-data persistence on Horizon FS / FAT32 and Eden Emulator.",
+        v101_c2: "Stable 60 FPS native gameplay on Switch CFW without overclocking.",
+        v101_b1: "<strong>10 Outrun Mode:</strong> Minor rendering glitch (missing boundary lines / brief blue flash near the 10th rival). No crash.",
+        v101_b2: "<strong>Applet Mode:</strong> Launching from Album is not supported (requires Title Takeover or NSP Forwarder).",
+        v100_c1: "First unofficial Nintendo Switch homebrew port (<code>devkitPro</code>, <code>libnx</code>, <code>SDL2</code>, OpenGL ES 3.2).",
+        v100_c2: "Handheld, Dual Joy-Con, and Pro Controller support.",
+        v100_b1: "<strong>Save-Data Issue:</strong> <code>rename()</code> overwrite failed on FAT32/Switch (fixed in v1.0.1).",
+        v100_b2: "No touchscreen menu or Online/LAN Versus support yet.",
         footer_donate: "Support / Donate"
       },
       id: {
         nav_team: "Developer",
         nav_controls: "Kontrol 3D",
         nav_install: "Cara Pasang",
+        nav_changelog: "Riwayat Versi",
         nav_donate: "Donasi",
         hero_badge: "Sebelumnya Super3DX+ NX • Resmi Rebrand ke NSwitch3DX+",
         hero_top: "Balapan Wangan,",
@@ -1146,6 +1338,25 @@
         n_1: "<strong>Rilis Khusus Kode:</strong> Download hanya berisi binary <code>.nro</code>. Tidak menyertakan ROM, dump, atau isi folder <code>data/</code>.",
         n_2: "<strong>Cek Log Otomatis:</strong> Jika mengalami layar hitam atau crash, cek file <code>sdmc:/switch/super3dx+nx/save/log.txt</code>.",
         n_3: "<strong>False Positive Windows Defender:</strong> File homebrew tanpa sertifikat resmi kadang terdeteksi Windef. Tambahkan folder ekstrak ke Exclusions di Windows Security.",
+        log_title: "Riwayat Versi & Daftar Bug",
+        log_sub: "Catatan perubahan lengkap, perbaikan, dan bug yang diketahui di setiap build NSwitch3DX+.",
+        lbl_changes: "Perubahan & Fitur",
+        lbl_bugs: "Bug yang Diketahui",
+        v102_c1: "Resmi rebrand dari Super3DX+ NX menjadi <strong>NSwitch3DX+</strong> (nama file tetap <code>super3dx+nx.nro</code>).",
+        v102_c2: "Menambahkan navigasi menu <strong>Touchscreen</strong> & dukungan <strong>Online / LAN Versus</strong>.",
+        v102_c3: "Menambahkan pencatatan log diagnostik otomatis ke <code>save/log.txt</code>.",
+        v102_c4: "Versi Export (English) sudah didukung; versi Japan (JPN) sedang tahap uji coba.",
+        v102_b1: "<strong>Bug Save-Data (Sedang Diperbaiki):</strong> Error <code>garage1: could not move the new file in</code> di FAT32/Horizon FS & Eden membuat mobil baru/upgrade HP kembali seperti semula setelah restart.",
+        v102_b2: "<strong>NAT / UPnP:</strong> Pesan <code>nat: ssdp found nothing</code> bisa muncul di emulator atau router tertentu; perlu port forwarding manual untuk Online Versus.",
+        v102_b3: "<strong>Glitch Visual 10 Outrun:</strong> Garis batas kadang hilang dan layar berkedip biru sesaat (tidak menyebabkan crash).",
+        v101_c1: "Perbaikan penyimpanan save-data <code>garage</code> & <code>ranking</code> di Horizon FS / FAT32 dan Eden Emulator.",
+        v101_c2: "Gameplay 60 FPS stabil di Switch CFW tanpa perlu overclock.",
+        v101_b1: "<strong>Mode 10 Outrun:</strong> Glitch rendering minor (garis batas hilang / kedip biru sesaat di sekitar rival ke-10). Tidak crash.",
+        v101_b2: "<strong>Applet Mode:</strong> Membuka lewat Album tidak didukung (wajib Title Takeover atau NSP Forwarder).",
+        v100_c1: "Rilis perdana portingan homebrew Nintendo Switch (<code>devkitPro</code>, <code>libnx</code>, <code>SDL2</code>, OpenGL ES 3.2).",
+        v100_c2: "Mendukung Handheld, Dual Joy-Con, dan Pro Controller.",
+        v100_b1: "<strong>Masalah Save-Data:</strong> Fungsi <code>rename()</code> gagal menimpa file di FAT32/Switch (diperbaiki di v1.0.1).",
+        v100_b2: "Belum mendukung menu touchscreen maupun Online/LAN Versus.",
         footer_donate: "Dukung / Donasi"
       }
     };
